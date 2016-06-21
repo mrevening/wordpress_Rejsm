@@ -102,7 +102,6 @@ function rejsm_select_wojewodztwo($user){
                         'wielkopolskie' => 'wielkopolskie',
                         'zachodniopomorskie' => 'zachodniopomorskie'
                         );
-    //$user_id = wp_get_current_user();
     $current_wojewodztwo = get_user_meta ($user->ID, 'wojewodztwo', true);
     if (!$current_wojewodztwo ? $selected = '' : $selected = $current_wojewodztwo);
     ?>
@@ -113,12 +112,8 @@ function rejsm_select_wojewodztwo($user){
             <td>
                 <?php
                 $select = '<select name="wojewodztwo" id="wojewodztwo">';
-
                 foreach ( $options as $key => $value )
-                {
                     $select .= '  <option value="' . $key . ( $key == $selected ? '" selected="selected">' : '">' ) . $value . '</option>';
-                }
-
                 $select .= '</select>';
                 echo $select;
                 ?>
@@ -130,7 +125,6 @@ function rejsm_select_wojewodztwo($user){
     </table>
 <?php
 }
-
 add_action( 'personal_otions_update', 'rejsm_user_wojewodztwo_update');
 add_action( 'edit_user_profile_update', 'rejsm_user_wojewodztwo_update');
 function rejsm_user_wojewodztwo_update($user_id){
